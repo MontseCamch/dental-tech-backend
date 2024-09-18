@@ -1,13 +1,11 @@
 package com.clinic.dental_tech.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,9 +25,6 @@ public class Doctors {
     @Column
     private String speciality;
     
-    @OneToOne(mappedBy = "doctor")
-    @JsonBackReference
-    private Treatments treatment;
 
     public Doctors() {}
 

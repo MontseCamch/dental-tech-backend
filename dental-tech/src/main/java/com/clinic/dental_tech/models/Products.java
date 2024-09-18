@@ -1,6 +1,5 @@
 package com.clinic.dental_tech.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,12 +32,10 @@ public class Products {
 
     @ManyToOne
     @JoinColumn(name = "iduser", nullable = false)
-    @JsonBackReference
     private Users user;
 
     @ManyToOne
     @JoinColumn(name = "idpatient", nullable = false)
-    @JsonBackReference
     private Patients patient;
 
     public Products() {}
