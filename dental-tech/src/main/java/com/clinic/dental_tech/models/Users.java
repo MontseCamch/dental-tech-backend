@@ -1,6 +1,8 @@
 package com.clinic.dental_tech.models;
 
 
+
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +15,8 @@ import jakarta.persistence.Table;
 public class Users {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long iduser;
+    @Column(name="iduser")
+	private Long id_user;
     
     @Column
     private String first_name;
@@ -26,12 +29,14 @@ public class Users {
     
     @Column
     private String user_password;
+    
+    
 
     public Users() {}
 
 	public Users(Long iduser, String first_name, String last_name, String email, String user_password) {
 		super();
-		this.iduser = iduser;
+		this.id_user = iduser;
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.email = email;
@@ -39,11 +44,11 @@ public class Users {
 	}
 
 	public Long getIduser() {
-		return iduser;
+		return id_user;
 	}
 
 	public void setIduser(Long iduser) {
-		this.iduser = iduser;
+		this.id_user = iduser;
 	}
 
 	public String getFirst_name() {
@@ -80,7 +85,7 @@ public class Users {
 
 	@Override
 	public String toString() {
-		return "Users [iduser=" + iduser + ", first_name=" + first_name + ", last_name=" + last_name + ", email="
+		return "Users [iduser=" + id_user + ", first_name=" + first_name + ", last_name=" + last_name + ", email="
 				+ email + ", user_password=" + user_password + "]";
 	}
     

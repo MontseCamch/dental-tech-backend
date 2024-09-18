@@ -1,10 +1,13 @@
 package com.clinic.dental_tech.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -12,7 +15,8 @@ import jakarta.persistence.Table;
 public class Doctors {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long iddoctor;
+    @Column(name="iddoctor")
+	private Long id_doctor;
 
     @Column
     private String first_name;
@@ -22,23 +26,27 @@ public class Doctors {
 
     @Column
     private String speciality;
+    
+    @OneToOne(mappedBy = "doctor")
+    @JsonBackReference
+    private Treatments treatment;
 
     public Doctors() {}
 
 	public Doctors(Long iddoctor, String first_name, String last_name, String speciality) {
 		super();
-		this.iddoctor = iddoctor;
+		this.id_doctor = iddoctor;
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.speciality = speciality;
 	}
 
 	public Long getIddoctor() {
-		return iddoctor;
+		return id_doctor;
 	}
 
 	public void setIddoctor(Long iddoctor) {
-		this.iddoctor = iddoctor;
+		this.id_doctor = iddoctor;
 	}
 
 	public String getFirst_name() {
@@ -67,7 +75,7 @@ public class Doctors {
 
 	@Override
 	public String toString() {
-		return "Doctors [iddoctor=" + iddoctor + ", first_name=" + first_name + ", last_name=" + last_name
+		return "Doctors [iddoctor=" + id_doctor + ", first_name=" + first_name + ", last_name=" + last_name
 				+ ", speciality=" + speciality + "]";
 	}
     

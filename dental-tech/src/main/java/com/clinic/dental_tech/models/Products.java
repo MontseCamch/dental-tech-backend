@@ -1,5 +1,7 @@
 package com.clinic.dental_tech.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,7 +16,8 @@ import jakarta.persistence.Table;
 public class Products {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idproduct;
+    @Column(name="idproduct")
+	private Long id_product;
 
     @Column
     private String product_name;
@@ -30,10 +33,12 @@ public class Products {
 
     @ManyToOne
     @JoinColumn(name = "iduser", nullable = false)
+    @JsonBackReference
     private Users user;
 
     @ManyToOne
     @JoinColumn(name = "idpatient", nullable = false)
+    @JsonBackReference
     private Patients patient;
 
     public Products() {}
@@ -41,7 +46,7 @@ public class Products {
 	public Products(Long idproduct, String product_name, int stock, double price, String category, Users user,
 			Patients patient) {
 		super();
-		this.idproduct = idproduct;
+		this.id_product = idproduct;
 		this.product_name = product_name;
 		this.stock = stock;
 		this.price = price;
@@ -51,11 +56,11 @@ public class Products {
 	}
 
 	public Long getIdproduct() {
-		return idproduct;
+		return id_product;
 	}
 
 	public void setIdproduct(Long idproduct) {
-		this.idproduct = idproduct;
+		this.id_product = idproduct;
 	}
 
 	public String getProduct_name() {
@@ -108,7 +113,7 @@ public class Products {
 
 	@Override
 	public String toString() {
-		return "Products [idproduct=" + idproduct + ", product_name=" + product_name + ", stock=" + stock + ", price="
+		return "Products [idproduct=" + id_product + ", product_name=" + product_name + ", stock=" + stock + ", price="
 				+ price + ", category=" + category + ", user=" + user + ", patient=" + patient + "]";
 	}
     

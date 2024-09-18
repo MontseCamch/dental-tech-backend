@@ -1,5 +1,7 @@
 package com.clinic.dental_tech.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,93 +16,112 @@ import jakarta.persistence.Table;
 public class Appointments {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idappointment;
+	@Column(name="idappointment")
+    private Long id_appointment;
 
     @Column
-    private String appointment_date;
-
+    private String date_time;
     @Column
-    private String appointment_time;
+    private String reason;
 
     @ManyToOne
     @JoinColumn(name = "idpatient", nullable = false)
+    @JsonBackReference
     private Patients patient;
 
     @ManyToOne
     @JoinColumn(name = "idtreatment", nullable = false)
+    @JsonBackReference
     private Treatments treatment;
 
-    @ManyToOne
-    @JoinColumn(name = "iddoctor", nullable = false)
-    private Doctors doctor;
 
     public Appointments() {}
 
-	public Appointments(Long idappointment, String appointment_date, String appointment_time, Patients patient,
-			Treatments treatment, Doctors doctor) {
+	
+
+	public Appointments(Long idappointment, String date_time, String reason, Patients patient, Treatments treatment) {
 		super();
-		this.idappointment = idappointment;
-		this.appointment_date = appointment_date;
-		this.appointment_time = appointment_time;
+		this.id_appointment = idappointment;
+		this.date_time = date_time;
+		this.reason = reason;
 		this.patient = patient;
 		this.treatment = treatment;
-		this.doctor = doctor;
 	}
+
+	
+	
+
+	
 
 	public Long getIdappointment() {
-		return idappointment;
+		return id_appointment;
 	}
+
+
 
 	public void setIdappointment(Long idappointment) {
-		this.idappointment = idappointment;
+		this.id_appointment = idappointment;
 	}
 
-	public String getAppointment_date() {
-		return appointment_date;
+
+
+	public String getDate_time() {
+		return date_time;
 	}
 
-	public void setAppointment_date(String appointment_date) {
-		this.appointment_date = appointment_date;
+
+
+	public void setDate_time(String date_time) {
+		this.date_time = date_time;
 	}
 
-	public String getAppointment_time() {
-		return appointment_time;
+
+
+	public String getReason() {
+		return reason;
 	}
 
-	public void setAppointment_time(String appointment_time) {
-		this.appointment_time = appointment_time;
+
+
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
+
+
 
 	public Patients getPatient() {
 		return patient;
 	}
 
+
+
 	public void setPatient(Patients patient) {
 		this.patient = patient;
 	}
+
+
 
 	public Treatments getTreatment() {
 		return treatment;
 	}
 
+
+
 	public void setTreatment(Treatments treatment) {
 		this.treatment = treatment;
 	}
 
-	public Doctors getDoctor() {
-		return doctor;
-	}
 
-	public void setDoctor(Doctors doctor) {
-		this.doctor = doctor;
-	}
 
 	@Override
 	public String toString() {
-		return "Appointments [idappointment=" + idappointment + ", appointment_date=" + appointment_date
-				+ ", appointment_time=" + appointment_time + ", patient=" + patient + ", treatment=" + treatment
-				+ ", doctor=" + doctor + "]";
+		return "Appointments [idappointment=" + id_appointment + ", date_time=" + date_time + ", reason=" + reason
+				+ ", patient=" + patient + ", treatment=" + treatment + "]";
 	}
+
+
+
+	
     
     
 }

@@ -12,7 +12,8 @@ import jakarta.persistence.Table;
 public class Orders {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idorder;
+    @Column(name="idorder")
+	private Long id_order;
 
     @Column
     private String order_date;
@@ -33,7 +34,7 @@ public class Orders {
 
 	public Orders(Long idorder, String order_date, double total, String order_status, int quantity, double unit_price) {
 		super();
-		this.idorder = idorder;
+		this.id_order = idorder;
 		this.order_date = order_date;
 		this.total = total;
 		this.order_status = order_status;
@@ -42,11 +43,11 @@ public class Orders {
 	}
 
 	public Long getIdorder() {
-		return idorder;
+		return id_order;
 	}
 
 	public void setIdorder(Long idorder) {
-		this.idorder = idorder;
+		this.id_order = idorder;
 	}
 
 	public String getOrder_date() {
@@ -91,7 +92,7 @@ public class Orders {
 
 	@Override
 	public String toString() {
-		return "Orders [idorder=" + idorder + ", order_date=" + order_date + ", total=" + total + ", order_status="
+		return "Orders [idorder=" + id_order + ", order_date=" + order_date + ", total=" + total + ", order_status="
 				+ order_status + ", quantity=" + quantity + ", unit_price=" + unit_price + "]";
 	}
     

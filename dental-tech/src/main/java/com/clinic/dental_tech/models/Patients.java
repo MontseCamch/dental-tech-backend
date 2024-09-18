@@ -1,5 +1,7 @@
 package com.clinic.dental_tech.models;
 
+
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,7 +16,8 @@ import jakarta.persistence.Table;
 public class Patients {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idpatient;
+    @Column(name="idpatient")
+	private Long id_patient;
     
     @Column
     private String address;
@@ -30,18 +33,18 @@ public class Patients {
 
 	public Patients(Long idpatient, String address, String phone, Users user) {
 		super();
-		this.idpatient = idpatient;
+		this.id_patient = idpatient;
 		this.address = address;
 		this.phone = phone;
 		this.user = user;
 	}
 
 	public Long getIdpatient() {
-		return idpatient;
+		return id_patient;
 	}
 
 	public void setIdpatient(Long idpatient) {
-		this.idpatient = idpatient;
+		this.id_patient = idpatient;
 	}
 
 	public String getAddress() {
@@ -70,7 +73,7 @@ public class Patients {
 
 	@Override
 	public String toString() {
-		return "Patients [idpatient=" + idpatient + ", address=" + address + ", phone=" + phone + ", user=" + user
+		return "Patients [idpatient=" + id_patient + ", address=" + address + ", phone=" + phone + ", user=" + user
 				+ "]";
 	}
     
