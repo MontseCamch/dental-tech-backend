@@ -5,13 +5,13 @@ FROM eclipse-temurin:21-jdk AS build
 WORKDIR /app
 
 # Copy the Gradle wrapper and build files
-COPY gradlew gradlew
-COPY gradle gradle
-COPY build.gradle .
-COPY settings.gradle .
+COPY dental-tech/gradlew gradlew
+COPY dental-tech/gradle gradle
+COPY dental-tech/build.gradle .
+COPY dental-tech/settings.gradle .
 
 # Copy the source code
-COPY src src
+COPY dental-tech/src src
 
 # Grant execution rights to the Gradle wrapper
 RUN chmod +x gradlew
